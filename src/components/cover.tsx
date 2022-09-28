@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import Image from 'next/image';
 import styles from '../styles/Cover.module.css';
 
 interface CoverProps {
@@ -16,9 +16,9 @@ const Cover = ({ name, bgColor, logoImgUrl, screenImgUrl, logoWidth, logoHeight,
   return (
     <div className={`${styles.cover} ${covered ? styles.covered : undefined}`} style={{ background: bgColor }} draggable={false}>
       <div className={styles.logo}>
-        <img src={logoImgUrl} alt={name} draggable={false} width={logoWidth} height={logoHeight} />
+        <Image src={logoImgUrl} alt={name} draggable={false} width={logoWidth} height={logoHeight} />
       </div>
-      <img src={screenImgUrl} draggable={false} width={381.02} height={557.22} className={styles.screen} />
+      <Image src={screenImgUrl} alt={name} draggable={false} width={381.02} height={557.22} className={styles.screen} />
     </div>
   )
 }

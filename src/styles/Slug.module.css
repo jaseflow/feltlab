@@ -1,0 +1,16 @@
+.slug {
+  padding-top: 100px;
+}
+
+.description {
+  font-size: 150%;
+  margin-bottom: 2rem;
+}
+
+@media(min-width: 1000px) {
+  .grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-column-gap: 3rem;
+  }
+}

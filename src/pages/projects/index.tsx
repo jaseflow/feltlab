@@ -17,7 +17,7 @@ const Projects: NextPage = ({ posts } : any) => {
       <h1>Projects</h1>
 
       {posts.map((post: any, index: number) => (
-        <Link href={`/projects/${post.slug}`}>{post.frontMatter.title}</Link>
+        <Link href={`/projects/${post.slug}`} key={index}>{post.frontMatter.title}</Link>
       ))}
 
     </div>
@@ -27,10 +27,10 @@ const Projects: NextPage = ({ posts } : any) => {
 export default Projects
 
 export const getStaticProps = async () => {
-  const files = fs.readdirSync(path.join('src', 'posts'))
+  const files = fs.readdirSync(path.join('src', 'posts', 'projects'))
 
   const posts = files.map(filename => {
-    const markdownWithMeta = fs.readFileSync(path.join('src', 'posts', filename)) as any;
+    const markdownWithMeta = fs.readFileSync(path.join('src', 'posts', 'projects', filename)) as any;
     const { data: frontMatter } = matter(markdownWithMeta);
 
     return {

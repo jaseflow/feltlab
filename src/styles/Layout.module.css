@@ -1,0 +1,36 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(248.6deg, rgba(0, 57, 255, 0.075) 0%, rgba(0, 0, 0, 0) 100%), #00060E;
+  min-height: 100vh;
+  color: #fff;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 2rem;
+}
+
+.header {
+  background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0));
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.link {
+  color: #406AFD;
+  text-decoration: none;
+  font-weight: 600;
+  font-family: 'Fredoka';
+}
+
+.body {
+  flex: 1;
+}

@@ -13,7 +13,6 @@ import Cover from '../components/cover';
 
 const Home: NextPage = ({ projects } : any) => {
 
-  // HMM
   const scrollRef = useRef<HTMLElement>(null) as any;
 
   const [mouseDown, setMouseDown] = useState(false);

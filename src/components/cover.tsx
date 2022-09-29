@@ -18,7 +18,9 @@ const Cover = ({ name, bgColor, logoImgUrl, screenImgUrl, logoWidth, logoHeight,
       <div className={styles.logo}>
         <Image src={logoImgUrl} alt={name} draggable={false} width={logoWidth} height={logoHeight} />
       </div>
-      <Image src={screenImgUrl} alt={name} draggable={false} width={381.02} height={557.22} className={styles.screen} />
+      <div className={styles.screen}>
+        <Image src={screenImgUrl} alt={name} draggable={false} width={381.02} height={557.22} />
+      </div>
     </div>
   )
 }

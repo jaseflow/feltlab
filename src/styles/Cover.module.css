@@ -1,6 +1,6 @@
 .cover {
-  width: 316px;
-  height: 481px;
+  width: 300px;
+  height: 400px;
   background: #999;
   position: relative;
   transition: transform 375ms ease;
@@ -30,14 +30,16 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  max-width: 70%;
+  margin: 0 auto;
 }
 
-.logo img {
+.logo > span {
   transition: all 375ms ease;
   user-select: none;
 }
 
-.screen {
+.screen > span {
   transition: all 375ms ease;
   position: relative;
   width: 100%;
@@ -49,18 +51,18 @@
   transform: translateY(0);
 }
 
-.cover:hover .screen {
+.cover:hover .screen > span {
   transform: translateY(-20px) scale(1.075);
 }
 
-.cover:hover .logo img {
+.cover:hover .logo > span {
   transform: translateY(-20px);
 }
 
-.covered:hover .screen {
+.covered:hover .screen > span {
   transform: translateY(0) scale(1);
 }
 
-.covered:hover .logo img {
+.covered:hover .logo > span {
   transform: translateY(0);
 }

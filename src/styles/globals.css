@@ -29,6 +29,12 @@ body {
   color: #fff;
   border: 2px solid transparent;
   border-radius: 2rem;
+  transition: all 375ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.8);
 }
 
 .btn--large {

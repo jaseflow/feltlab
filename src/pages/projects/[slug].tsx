@@ -19,15 +19,17 @@ const Project: NextPage = ({ frontMatter, mdxSource }: any) => {
       </Head>
 
       <div className={styles.grid}>
-        <Cover
-          covered={true}
-          name={frontMatter.title}
-          logoWidth={frontMatter.coverLogoWidth}
-          logoHeight={frontMatter.coverLogoHeight}
-          screenImgUrl={frontMatter.coverScreenshotUrl}
-          logoImgUrl={frontMatter.coverLogoUrl}
-          bgColor={frontMatter.coverBackgroundColor}
-        />
+        <div>
+          <Cover
+            covered={true}
+            name={frontMatter.title}
+            logoWidth={frontMatter.coverLogoWidth}
+            logoHeight={frontMatter.coverLogoHeight}
+            screenImgUrl={frontMatter.coverScreenshotUrl}
+            logoImgUrl={frontMatter.coverLogoUrl}
+            bgColor={frontMatter.coverBackgroundColor}
+          />
+        </div>
         <div>
           <h1>{frontMatter.title}</h1>
           <p className={styles.description}>{frontMatter.description}</p>
@@ -59,6 +61,7 @@ export const getStaticPaths = () => {
 }
 
 export const getStaticProps = async ({ params: { slug } } : any) => {
+
   const markdownWithMeta = fs.readFileSync(path.join('src', 'posts', 'projects', `${slug}.mdx`))
 
   const { data: frontMatter, content } = matter(markdownWithMeta);

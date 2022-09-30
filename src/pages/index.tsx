@@ -4,38 +4,14 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Link from 'next/link'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import styles from '../styles/Home.module.css';
 
-import Cover from '../components/cover';
+import FolioScroll from '../components/folio-scroll';
 
 const Home: NextPage = ({ projects } : any) => {
-
-  const scrollRef = useRef<HTMLElement>(null) as any;
-
-  const [mouseDown, setMouseDown] = useState(false);
-  const [startX, setStartX] = useState<number>(0);
-  const [scrollLeft, setScrollLeft] = useState<number>(0);
-
-  function startDrag(e: any) {
-    setMouseDown(true);
-    setStartX(e.pageX - scrollRef.current.offsetLeft);
-    setScrollLeft(scrollRef.current.scrollLeft);
-  }
-
-  function stopDrag(e: any) {
-    setMouseDown(false);
-  }
-
-  function handleMouseMove(e: any) {
-    e.preventDefault();
-    if(!mouseDown) { return; }
-    const x = e.pageX - scrollRef.current.offsetLeft;
-    const scroll = x - startX;
-    scrollRef.current.scrollLeft = scrollLeft - scroll;
-  }
 
   return (
     <div className={styles.container}>
@@ -44,7 +20,7 @@ const Home: NextPage = ({ projects } : any) => {
         <meta name="description" content="Feltlab" />
       </Head>
       <div className={styles.body}>
-        <h1 className={`title ${styles.title}`}>Dream, design, and develop with Feltlab</h1>
+        <h1 className={`title ${styles.title}`}>Build something special with Feltlab</h1>
         <ul className={styles.skills}>
           <li>Product strategy</li>
           <li>UI Design and Prototyping</li>
@@ -56,35 +32,7 @@ const Home: NextPage = ({ projects } : any) => {
         </nav>
       </div>
       <div className={styles.glow}></div>
-      <div className={styles.folio}>
-        <ol
-          className={styles.folioScroll}
-          onMouseMove={handleMouseMove}
-          onMouseDown={startDrag}
-          onMouseUp={stopDrag}
-          onMouseLeave={stopDrag}
-          ref={scrollRef}
-        >
-          {projects?.map(({ frontMatter, slug } : any, i: number) => {
-            return (
-              <li key={i}>
-                <Link href={`/projects/${slug}`}>
-                  <a draggable={false}>
-                    <Cover
-                      name={frontMatter.title}
-                      logoWidth={frontMatter.coverLogoWidth}
-                      logoHeight={frontMatter.coverLogoHeight}
-                      screenImgUrl={frontMatter.coverScreenshotUrl}
-                      logoImgUrl={frontMatter.coverLogoUrl}
-                      bgColor={frontMatter.coverBackgroundColor}
-                    />
-                  </a>
-                </Link>
-              </li>
-            )
-          })}
-        </ol>
-      </div>
+      <FolioScroll projects={projects} />
     </div>
   )
 }

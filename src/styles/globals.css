@@ -10,12 +10,6 @@ body {
   font-size: 100%;
 }
 
-body {
-  background: #00060E;
-  line-height: 1.5;
-  color: #ddd;
-}
-
 .btn {
   display: flex;
   align-items: center;

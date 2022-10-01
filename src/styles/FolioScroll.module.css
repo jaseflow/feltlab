@@ -22,6 +22,12 @@
   margin-bottom: -6px;
   padding-top: 20px;
   overflow: hidden;
+  opacity: 0.4;
+  transition: opacity 375ms ease;
+}
+
+.folioItem:hover {
+  opacity: 1;
 }
 
 .folio li:first-child {

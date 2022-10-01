@@ -48,6 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </div>
       </section>
+      <div className={styles.glow}></div>
     </div>
   )
 }

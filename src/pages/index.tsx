@@ -31,7 +31,6 @@ const Home: NextPage = ({ projects } : any) => {
           <Link href="/contact"><a className="btn btn--large btn--secondary">See how we can help</a></Link>
         </nav>
       </div>
-      <div className={styles.glow}></div>
       <FolioScroll projects={projects} />
     </div>
   )

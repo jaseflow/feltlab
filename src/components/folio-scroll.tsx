@@ -47,7 +47,7 @@ const FolioScroll = ({ projects } : FolioScrollProps) => {
         >
           {projects?.map(({ frontMatter, slug } : any, i: number) => {
             return (
-              <li key={i}>
+              <li key={i} className={styles.folioItem}>
                 <Link href={`/projects/${slug}`}>
                   <a draggable={false}>
                     <Cover

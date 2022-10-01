@@ -9,17 +9,22 @@ interface CoverProps {
   screenImgUrl: string;
   bgColor: string;
   covered?: boolean;
+  fixedHeight?: boolean;
 }
 
-const Cover = ({ name, bgColor, logoImgUrl, screenImgUrl, logoWidth, logoHeight, covered } : CoverProps) => {
+const Cover = ({ name, bgColor, logoImgUrl, screenImgUrl, logoWidth, logoHeight, covered, fixedHeight } : CoverProps) => {
 
   return (
-    <div className={`${styles.cover} ${covered ? styles.covered : undefined}`} style={{ background: bgColor }} draggable={false}>
+    <div className={`
+      ${styles.cover}
+      ${covered ? styles.covered : undefined}
+      ${fixedHeight ? styles.fixedHeight : undefined}
+      `} style={{ background: bgColor }} draggable={false}>
       <div className={styles.logo}>
         <Image src={logoImgUrl} alt={name} draggable={false} width={logoWidth} height={logoHeight} />
       </div>
       <div className={styles.screen}>
-        <Image src={screenImgUrl} alt={name} draggable={false} width={210} height={432} />
+        <Image src={screenImgUrl} alt={name} draggable={false} width={200} height={411} />
       </div>
     </div>
   )

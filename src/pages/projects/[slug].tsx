@@ -7,6 +7,7 @@ import {MDXRemote} from 'next-mdx-remote';
 
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Link from 'next/link'
 import styles from '../../styles/Slug.module.css'
 
 const Project: NextPage = ({ frontMatter, mdxSource }: any) => {
@@ -19,7 +20,7 @@ const Project: NextPage = ({ frontMatter, mdxSource }: any) => {
       </Head>
 
       <div className={styles.grid}>
-        <div>
+        <div className={styles.cover}>
           <Cover
             covered={true}
             name={frontMatter.title}
@@ -31,6 +32,7 @@ const Project: NextPage = ({ frontMatter, mdxSource }: any) => {
           />
         </div>
         <div>
+          <Link href="/projects"><a className={styles.breadcrumb}>Projects</a></Link>
           <h1>{frontMatter.title}</h1>
           <p className={styles.description}>{frontMatter.description}</p>
           <MDXRemote {...mdxSource} />

@@ -4,6 +4,9 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .folioScroll {
@@ -13,7 +16,7 @@
   padding-left: 1rem;
 }
 
-.folio li {
+.folioItem {
   display: inline-block;
   margin-left: 1rem;
   margin-bottom: -6px;

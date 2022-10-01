@@ -7,10 +7,24 @@
   margin-bottom: 2rem;
 }
 
+.breadcrumb {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.breadcrumb:hover { text-decoration: underline }
+
+
 @media(min-width: 1000px) {
   .grid {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-column-gap: 3rem;
   }
+
+  .cover {
+    width: 300px;
+  }
+  
 }

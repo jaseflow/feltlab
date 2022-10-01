@@ -1,5 +1,5 @@
 .cover {
-  width: 300px;
+  padding: 0 2rem;
   height: 400px;
   background: #999;
   position: relative;
@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  max-width: 70%;
+  max-width: 80%;
   margin: 0 auto;
 }
 
@@ -97,5 +97,15 @@
 }
 
 .covered:hover .logo > span {
+  transform: translateY(0);
+}
+
+.fixedHeight {
+  animation: none;
+  height: 500px;
+}
+
+.fixedHeight .screen {
+  animation: none;
   transform: translateY(0);
 }

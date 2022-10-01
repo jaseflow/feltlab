@@ -28,7 +28,7 @@ const Home: NextPage = ({ projects } : any) => {
         </ul>
         <nav className={styles.actions}>
           <Link href="/contact"><a className="btn btn--large">Get in touch</a></Link>
-          <Link href="/contact"><a className="btn btn--large btn--secondary">See what we do</a></Link>
+          <Link href="/contact"><a className="btn btn--large btn--secondary">See how we can help</a></Link>
         </nav>
       </div>
       <div className={styles.glow}></div>
@@ -42,7 +42,18 @@ export default Home
 export const getStaticProps = async () => {
   const files = fs.readdirSync(path.join('src', 'posts', 'projects'))
 
-  const projects = files.map(filename => {
+  const filteredFiles = files.filter(filename => {
+    const markdownWithMeta = fs.readFileSync(path.join('src', 'posts', 'projects', filename)) as any;
+    const { data: frontMatter } = matter(markdownWithMeta);
+
+    if (frontMatter.includeInFolioScroll) {
+      return true;
+    } else {
+      return false;
+    }
+  })
+
+  const projects = filteredFiles.map(filename => {
     const markdownWithMeta = fs.readFileSync(path.join('src', 'posts', 'projects', filename)) as any;
     const { data: frontMatter } = matter(markdownWithMeta);
 

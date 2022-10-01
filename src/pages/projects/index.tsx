@@ -5,6 +5,10 @@ import matter from 'gray-matter';
 import Head from 'next/head';
 import Link from 'next/link';
 
+import styles from '../../styles/Projects.module.css';
+
+import Cover from '../../components/cover';
+
 const Projects: NextPage = ({ posts } : any) => {
   return (
     <div>
@@ -14,11 +18,26 @@ const Projects: NextPage = ({ posts } : any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Projects</h1>
-
-      {posts.map((post: any, index: number) => (
-        <Link href={`/projects/${post.slug}`} key={index}>{post.frontMatter.title}</Link>
-      ))}
+      <div className={styles.projects}>
+        {posts.map(({ frontMatter, slug } : any, index: number) => {
+          return (
+            <Link href={`/projects/${slug}`}>
+              <a draggable={false} className={frontMatter.doubleOnProjectsPage ? styles.doubleCol : undefined}>
+                <Cover
+                  covered={true}
+                  fixedHeight={true}
+                  name={frontMatter.title}
+                  logoWidth={frontMatter.coverLogoWidth}
+                  logoHeight={frontMatter.coverLogoHeight}
+                  screenImgUrl={frontMatter.coverScreenshotUrl}
+                  logoImgUrl={frontMatter.coverLogoUrl}
+                  bgColor={frontMatter.coverBackgroundColor}
+                />
+              </a>
+            </Link>
+          )
+        })}
+      </div>
 
     </div>
   )

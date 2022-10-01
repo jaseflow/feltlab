@@ -21,7 +21,7 @@ const Projects: NextPage = ({ posts } : any) => {
       <div className={styles.projects}>
         {posts.map(({ frontMatter, slug } : any, index: number) => {
           return (
-            <Link href={`/projects/${slug}`}>
+            <Link href={`/projects/${slug}`} key={index}>
               <a draggable={false} className={frontMatter.doubleOnProjectsPage ? styles.doubleCol : undefined}>
                 <Cover
                   covered={true}

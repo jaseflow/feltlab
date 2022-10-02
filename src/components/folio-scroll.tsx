@@ -49,7 +49,7 @@ const FolioScroll = ({ projects } : FolioScrollProps) => {
             return (
               <li key={i} className={styles.folioItem}>
                 <Link href={`/projects/${slug}`}>
-                  <a draggable={false}>
+                  <a draggable={false} className={styles.folioLink}>
                     <Cover
                       name={frontMatter.title}
                       logoWidth={frontMatter.coverLogoWidth}

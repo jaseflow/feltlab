@@ -9,8 +9,11 @@
 
 .breadcrumb {
   color: #fff;
-  text-decoration: none;
-  font-size: 1.5em;
+  opacity: 0.5;
+}
+
+.breadcrumb:hover {
+  opacity: 1;
 }
 
 .breadcrumb:hover { text-decoration: underline }

@@ -20,10 +20,10 @@ const Home: NextPage = ({ projects } : any) => {
         <meta name="description" content="Feltlab" />
       </Head>
       <div className={styles.body}>
-        <h1 className={`title ${styles.title}`}>Build something special with Feltlab</h1>
+        <h1 className={`title ${styles.title}`}>Build something special</h1>
         <ul className={styles.skills}>
           <li>Product strategy</li>
-          <li>UI Design and Prototyping</li>
+          <li>UI Design and prototyping</li>
           <li>Web and mobile development</li>
         </ul>
         <nav className={styles.actions}>

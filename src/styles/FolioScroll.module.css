@@ -22,7 +22,7 @@
   margin-bottom: -6px;
   padding-top: 20px;
   overflow: hidden;
-  opacity: 0.4;
+  opacity: 0.666;
   transition: opacity 375ms ease;
 }
 
@@ -36,4 +36,9 @@
 
 .folio li:last-child {
   margin-right: 1rem;
+}
+
+.folioLink {
+  display: block;
+  width: 300px;
 }

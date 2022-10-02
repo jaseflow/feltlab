@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -12,9 +12,19 @@ import Link from 'next/link'
 import styles from '../../styles/Slug.module.css'
 import { AppContext } from '../../context';
 
-const Project: NextPage = ({ frontMatter, mdxSource }: any) => {
+const Project: NextPage = ({ frontMatter, mdxSource, slugs, slugIndex }: any) => {
+
+  const [nextLink, setNextLink] = useState('');
 
   const { loading } = useContext(AppContext);
+
+  useEffect(() => {
+    if (slugIndex === slugs.length - 1) {
+      setNextLink(`/projects/${slugs[0]}`);
+    } else {
+      setNextLink(`/projects/${slugs[slugIndex + 1]}`);
+    }
+  })
 
   return (
     <div className={styles.slug}>
@@ -35,9 +45,11 @@ const Project: NextPage = ({ frontMatter, mdxSource }: any) => {
             logoImgUrl={frontMatter.coverLogoUrl}
             bgColor={frontMatter.coverBackgroundColor}
           />
+          <div className={styles.nav}>
+            <Link href={nextLink}><a className="btn btn--tertiary">Next project</a></Link>
+          </div>
         </div>
         <div className={`${styles.body} ${loading ? styles.bodyLoading : ''}`}>
-          <Link href="/projects"><a className={styles.breadcrumb}>Projects</a></Link>
           <h1>{frontMatter.title}</h1>
           <p className={styles.description}>{frontMatter.description}</p>
           <MDXRemote {...mdxSource} />
@@ -69,6 +81,11 @@ export const getStaticPaths = () => {
 
 export const getStaticProps = async ({ params: { slug } } : any) => {
 
+  const files = fs.readdirSync(path.join('src', 'posts', 'projects'))
+
+  const slugs = files.map(f => f.split('.')[0]);
+  const slugIndex = slugs.findIndex(s => s === slug);
+
   const markdownWithMeta = fs.readFileSync(path.join('src', 'posts', 'projects', `${slug}.mdx`))
 
   const { data: frontMatter, content } = matter(markdownWithMeta);
@@ -78,7 +95,9 @@ export const getStaticProps = async ({ params: { slug } } : any) => {
     props: {
       frontMatter,
       slug,
-      mdxSource
+      mdxSource,
+      slugs,
+      slugIndex
     }
   }
 

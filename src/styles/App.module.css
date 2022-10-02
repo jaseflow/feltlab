@@ -11,12 +11,44 @@
   flex: 1;
   position: relative;
   z-index: 10;
+  transition: all 375ms ease;
+}
+
+.contact {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: 0;
+  transition: all 375ms ease;
+}
+
+.contactForm {
+  padding: 4rem;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.contacting .contact {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.contacting .body {
+  transform: translateY(calc(-100% - 100px));
+  opacity: 0;
 }
 
 .logo {
   display: block;
   cursor: pointer;
   margin-left: 5px;
+  max-width: 140px;
 }
 
 .nav {
@@ -50,6 +82,7 @@
 }
 
 .glow {
+  display: none;
   position: fixed;
   bottom: 0;
   left: 0;

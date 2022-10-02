@@ -1,5 +1,4 @@
-import { useState, useRef } from 'react';
-
+import { useContext } from 'react';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -9,9 +8,13 @@ import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
+import { AppContext } from '../context';
+
 import FolioScroll from '../components/folio-scroll';
 
-const Home: NextPage = ({ projects } : any) => {
+const Home: NextPage = ({ projects, onContact } : any) => {
+
+  const { loading, setLoading } = useContext(AppContext);
 
   return (
     <div className={styles.container}>
@@ -20,18 +23,18 @@ const Home: NextPage = ({ projects } : any) => {
         <meta name="description" content="Feltlab" />
       </Head>
       <div className={styles.body}>
-        <h1 className={`title ${styles.title}`}>Build something special</h1>
+        <h1 className={`title ${styles.title}`}>Build something special.</h1>
         <ul className={styles.skills}>
           <li>Product strategy</li>
           <li>UI Design and prototyping</li>
           <li>Web and mobile development</li>
         </ul>
         <nav className={styles.actions}>
-          <Link href="/contact"><a className="btn btn--large">Get in touch</a></Link>
+          <button className="btn btn--large" onClick={onContact}>Get in touch</button>
           <Link href="/contact"><a className="btn btn--large btn--secondary">See how we can help</a></Link>
         </nav>
       </div>
-      <FolioScroll projects={projects} />
+      <FolioScroll fadeAway={loading} projects={projects} />
     </div>
   )
 }

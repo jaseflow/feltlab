@@ -14,11 +14,23 @@
   flex-direction: column;
 }
 
+.contacting {
+  position: relative;
+}
+
 .title {
   color: #fff;
   text-align: center;
   margin-bottom: 0.5rem;
-  font-size: 4.5rem;
+}
+
+.avatar {
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 10px solid #cddbf2;
+  width: 200px;
+  height: 200px;
 }
 
 .actions {

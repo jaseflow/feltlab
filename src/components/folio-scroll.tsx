@@ -6,9 +6,10 @@ import Cover from './cover';
 
 interface FolioScrollProps {
   projects: any[];
+  fadeAway?: boolean;
 }
 
-const FolioScroll = ({ projects } : FolioScrollProps) => {
+const FolioScroll = ({ projects, fadeAway } : FolioScrollProps) => {
 
   const scrollRef = useRef<HTMLElement>(null) as any;
 
@@ -36,7 +37,7 @@ const FolioScroll = ({ projects } : FolioScrollProps) => {
 
 
   return (
-      <div className={styles.folio}>
+      <div className={`${styles.folio} ${fadeAway ? styles.fadeAway : ''}`}>
         <ol
           className={styles.folioScroll}
           onMouseMove={handleMouseMove}

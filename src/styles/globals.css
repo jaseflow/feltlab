@@ -10,6 +10,10 @@ body {
   font-size: 100%;
 }
 
+.inverse {
+  color: #222;
+}
+
 .btn {
   display: flex;
   align-items: center;
@@ -18,6 +22,8 @@ body {
   padding: 0 2rem;
   height: 44px;
   background-color: #406AFD;
+  cursor: pointer;
+  font-size: 100%;
   font-weight: 600;
   font-family: 'Fredoka';
   color: #fff;
@@ -55,7 +61,7 @@ body {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 4rem;
   color: #fff;
 }
 

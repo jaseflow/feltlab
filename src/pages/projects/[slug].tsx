@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -9,8 +10,12 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../../styles/Slug.module.css'
+import { AppContext } from '../../context';
 
 const Project: NextPage = ({ frontMatter, mdxSource }: any) => {
+
+  const { loading } = useContext(AppContext);
+
   return (
     <div className={styles.slug}>
       <Head>
@@ -20,7 +25,7 @@ const Project: NextPage = ({ frontMatter, mdxSource }: any) => {
       </Head>
 
       <div className={styles.grid}>
-        <div className={styles.cover}>
+        <div className={`${styles.cover} ${loading ? styles.coverLoading : ''}`}>
           <Cover
             covered={true}
             name={frontMatter.title}
@@ -31,7 +36,7 @@ const Project: NextPage = ({ frontMatter, mdxSource }: any) => {
             bgColor={frontMatter.coverBackgroundColor}
           />
         </div>
-        <div>
+        <div className={`${styles.body} ${loading ? styles.bodyLoading : ''}`}>
           <Link href="/projects"><a className={styles.breadcrumb}>Projects</a></Link>
           <h1>{frontMatter.title}</h1>
           <p className={styles.description}>{frontMatter.description}</p>

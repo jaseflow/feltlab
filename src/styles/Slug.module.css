@@ -2,6 +2,15 @@
   padding-top: 100px;
 }
 
+.body {
+  transition: all 375ms ease;
+}
+
+.bodyLoading {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
 .description {
   font-size: 150%;
   margin-bottom: 2rem;
@@ -28,6 +37,11 @@
 
   .cover {
     width: 300px;
+    transition: all 375ms ease;
   }
   
+  .coverLoading {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
 }

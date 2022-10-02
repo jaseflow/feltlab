@@ -12,6 +12,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  transition: all 375ms ease;
+}
+
+.bodyLoading {
+  opacity: 0;
 }
 
 .contacting {

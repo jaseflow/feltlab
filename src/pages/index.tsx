@@ -12,7 +12,7 @@ import { AppContext } from '../context';
 
 import FolioScroll from '../components/folio-scroll';
 
-const Home: NextPage = ({ projects, onContact } : any) => {
+const Home: NextPage = ({ projects } : any) => {
 
   const { loading, setLoading } = useContext(AppContext);
 
@@ -22,7 +22,7 @@ const Home: NextPage = ({ projects, onContact } : any) => {
         <title>FELTLAB</title>
         <meta name="description" content="Feltlab" />
       </Head>
-      <div className={styles.body}>
+      <div className={`${styles.body} ${loading ? styles.bodyLoading : ''}`}>
         <h1 className={`title ${styles.title}`}>Build something special.</h1>
         <ul className={styles.skills}>
           <li>Product strategy</li>
@@ -30,8 +30,8 @@ const Home: NextPage = ({ projects, onContact } : any) => {
           <li>Web and mobile development</li>
         </ul>
         <nav className={styles.actions}>
-          <button className="btn btn--large" onClick={onContact}>Get in touch</button>
-          <Link href="/contact"><a className="btn btn--large btn--secondary">See how we can help</a></Link>
+          <Link href="/contact"><a className="btn btn--large">Get started</a></Link>
+          <Link href="/how-we-can-help"><a className="btn btn--large btn--secondary">See how we can help</a></Link>
         </nav>
       </div>
       <FolioScroll fadeAway={loading} projects={projects} />

@@ -12,7 +12,7 @@ import styles from '../styles/App.module.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const isHome = router.pathname === '/';
+  const isHome = router.pathname === '/' || router.pathname === '/contact';
 
   const [contacting, setContacting] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -44,25 +44,29 @@ function MyApp({ Component, pageProps }: AppProps) {
                 <Image src="/feltlab.svg" alt="Feltlab" width={165} height={26} />
               </a>
             </Link>
-            <nav>
+            <nav className={isHome ? styles.navWrapHome :styles.navWrap}>
               <ul className={styles.nav}>
                 <li>
                   <Link href="/about">
-                    <a className={styles.link}>
+                    <a className="btn btn--clear">
                       About us
                     </a>
                   </Link>
                 </li>
                 <li>
                   <Link href="/projects">
-                    <a className={styles.link}>Work</a>
+                    <a className="btn btn--clear">
+                      Work
+                    </a>
                   </Link>
                 </li>
-                { !isHome &&
-                  <li>
-                    <Link href="/contact"><a className="btn">Get in touch</a></Link>
-                  </li>
-                }
+                <li>
+                  <Link href="/contact">
+                    <a className="btn">
+                      Get in touch
+                    </a>
+                  </Link>
+                </li>
               </ul>
             </nav>
           </div>

@@ -30,8 +30,7 @@ const Home: NextPage = ({ projects } : any) => {
           <li>Web and mobile development</li>
         </ul>
         <nav className={styles.actions}>
-          <Link href="/contact"><a className="btn btn--large">Get started</a></Link>
-          <Link href="/how-we-can-help"><a className="btn btn--large btn--secondary">See how we can help</a></Link>
+          <Link href="/contact"><a className="btn btn--large">Work with us</a></Link>
         </nav>
       </div>
       <FolioScroll fadeAway={loading} projects={projects} />

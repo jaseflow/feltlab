@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 100px);
+}
+
+.form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.helper {
+  font-size: 13px;
+  opacity: 0.75;
+  margin-bottom: 1rem;
+}

@@ -16,7 +16,19 @@ const Contact: NextPage = () => {
         <title>FELTLAB</title>
         <meta name="description" content="Feltlab" />
       </Head>
-      <h1>Contact us</h1>
+      <div className={styles.form}>
+        <div>
+          <label htmlFor="">Your Name</label>
+          <input className="input" type="text" />
+        </div>
+        <div>
+          <label htmlFor="">Your Company</label>
+          <input className="input" type="text" />
+        </div>
+        <div>
+          <label htmlFor="">How can we help?</label>
+        </div>
+      </div>
     </div>
   )
 }

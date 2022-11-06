@@ -10,7 +10,6 @@ import {MDXRemote} from 'next-mdx-remote';
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import Image from 'next/image';
 import styles from '../../styles/Slug.module.css'
 import { AppContext } from '../../context';
 
@@ -26,11 +25,11 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource, slugs, slugIndex }:
     } else {
       setNextLink(`/projects/${slugs[slugIndex + 1]}`);
     }
-  })
+  }, [setNextLink])
 
   const thumbsList = thumbs.map((t: any) => {
     return (
-      <Link href={`/projects/${t.slug}`}>
+      <Link href={`/projects/${t.slug}`} key={`thumb-${t.slug}}`}>
         <div>
           <Thumb
             name={t.title}
@@ -75,7 +74,7 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource, slugs, slugIndex }:
                   className={`btn btn--secondary ${styles.cta}`}
                   href={frontMatter.previewLink}
                   target="_blank"
-                  rel="nofollow">
+                  rel="noreferrer">
                   Visit {frontMatter.title}
                 </a>
               </p>

@@ -1,9 +1,10 @@
 .slug {
-  padding-top: 100px;
+  padding: 194px 0;
 }
 
 .body {
   transition: all 375ms ease;
+  color: #999;
 }
 
 .bodyLoading {
@@ -25,6 +26,30 @@
   opacity: 1;
 }
 
+.thumbs {
+  opacity: 0;
+  margin-top: 30px;
+  display: grid;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  grid-template-columns: repeat(4, 1fr);
+  animation: showThumbs 375ms 750ms forwards;
+}
+
+.cta {
+  max-width: 300px;
+}
+
+@keyframes showThumbs {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .breadcrumb:hover { text-decoration: underline }
 
 .nav {
@@ -39,8 +64,11 @@
   }
 
   .cover {
-    width: 300px;
+    width: 400px;
     transition: all 375ms ease;
+    position: sticky;
+    top: 150px;
+    max-height: 500px;
   }
   
   .coverLoading {

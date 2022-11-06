@@ -35,7 +35,6 @@ const FolioScroll = ({ projects, fadeAway } : FolioScrollProps) => {
     scrollRef.current.scrollLeft = scrollLeft - scroll;
   }
 
-
   return (
       <div className={`${styles.folio} ${fadeAway ? styles.fadeAway : ''}`}>
         <ol

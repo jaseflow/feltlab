@@ -3,11 +3,17 @@
   margin: 0;
   padding: 0;
 }
+
 html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-size: 100%;
+  font-size: 110%;
+  background-color: #00060E;
+}
+
+img {
+  max-width: 100%;
 }
 
 label {
@@ -22,7 +28,8 @@ label {
   height: 50px;
   border: 0;
   border-radius: 20px;
-  background: #fff;
+  background: #262626;
+  color: #fff;
   padding: 0 1.5rem;
   font-size: 100%;
   margin-bottom: 1rem;
@@ -84,7 +91,7 @@ label {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 40px;
 }
@@ -95,11 +102,67 @@ label {
   color: #fff;
 }
 
-h1 {
-  font-size: 4rem;
+h1,
+h2,
+h3,
+h4 {
   color: #fff;
 }
 
+h1 {
+  font-size: 4rem;
+}
+
+.spacing,
 p {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+}
+
+.Gallery {
+  position: relative;
+  margin-right: -200px;
+  margin-bottom: 3rem;
+}
+
+.Gallery:before {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  background: linear-gradient(to right, rgba(0,0,0,0), #00060E);
+  content: '';
+  z-index: 10;
+}
+
+.Gallery__wrap {
+  position: relative;
+  padding-bottom: 540px;
+  overflow-x: scroll;
+}
+
+.Gallery__scroll {
+  position: absolute;
+  white-space: nowrap;
+}
+
+.browser {
+  margin-bottom: 3rem;
+  border-top: 2em solid #f2f2f2;
+  box-shadow: 0 .1em 1em 0 rgba(0,0,0,.4);
+  position: relative;
+  border-radius: 10px 10px 0 0;
+}
+
+.browser:before {
+  display: block;
+  position: absolute;
+  content: "";
+  top: -1.25em;
+  left: 1em;
+  width: .5em;
+  height: .5em;
+  border-radius: 50%;
+  background-color: #f44;
+  box-shadow: 0 0 0 2px #f44,1.5em 0 0 2px #9b3,3em 0 0 2px #fb5;
 }

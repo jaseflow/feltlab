@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <AppContext.Provider value={{ loading, setLoading }}>
       <div className={`${styles.wrapper} ${contactingClass}`}>
         <header className={styles.header}>
-          <div className={`container ${styles.headerContainer}`}>
+          <div className={styles.headerContainer}>
             <Link href="/">
               <a className={styles.logo}>
                 <Image src="/feltlab.svg" alt="Feltlab" width={165} height={26} />

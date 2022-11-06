@@ -3,20 +3,22 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import Cover from '../../components/cover';
+import Thumb from '../../components/thumb';
 import { serialize } from 'next-mdx-remote/serialize';
 import {MDXRemote} from 'next-mdx-remote';
 
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import Image from 'next/image';
 import styles from '../../styles/Slug.module.css'
 import { AppContext } from '../../context';
 
-const Project: NextPage = ({ frontMatter, mdxSource, slugs, slugIndex }: any) => {
+const Project: NextPage = ({ thumbs, frontMatter, mdxSource, slugs, slugIndex }: any) => {
 
   const [nextLink, setNextLink] = useState('');
 
-  const { loading } = useContext(AppContext);
+  const {loading} = useContext(AppContext);
 
   useEffect(() => {
     if (slugIndex === slugs.length - 1) {
@@ -24,6 +26,20 @@ const Project: NextPage = ({ frontMatter, mdxSource, slugs, slugIndex }: any) =>
     } else {
       setNextLink(`/projects/${slugs[slugIndex + 1]}`);
     }
+  })
+
+  const thumbsList = thumbs.map((t: any) => {
+    return (
+      <Link href={`/projects/${t.slug}`}>
+        <div>
+          <Thumb
+            name={t.title}
+            bgColor={t.coverBackgroundColor}
+            logoImgUrl={t.coverIconUrl}
+          />
+        </div>
+      </Link>
+    )
   })
 
   return (
@@ -45,14 +61,31 @@ const Project: NextPage = ({ frontMatter, mdxSource, slugs, slugIndex }: any) =>
             logoImgUrl={frontMatter.coverLogoUrl}
             bgColor={frontMatter.coverBackgroundColor}
           />
-          <div className={styles.nav}>
-            <Link href={nextLink}><a className="btn btn--tertiary">Next project</a></Link>
+          <div className={styles.thumbs}>
+            {thumbsList}
           </div>
         </div>
         <div className={`${styles.body} ${loading ? styles.bodyLoading : ''}`}>
           <h1>{frontMatter.title}</h1>
           <p className={styles.description}>{frontMatter.description}</p>
+          {frontMatter.previewLink && 
+            (
+              <p>
+                <a
+                  className={`btn btn--secondary ${styles.cta}`}
+                  href={frontMatter.previewLink}
+                  target="_blank"
+                  rel="nofollow">
+                  Visit {frontMatter.title}
+                </a>
+              </p>
+            )
+          }
+
           <MDXRemote {...mdxSource} />
+          <div className={styles.nav}>
+            <Link href={nextLink}><a className="btn btn--tertiary">Next project</a></Link>
+          </div>
         </div>
       </div>
 
@@ -91,13 +124,25 @@ export const getStaticProps = async ({ params: { slug } } : any) => {
   const { data: frontMatter, content } = matter(markdownWithMeta);
   const mdxSource = await serialize(content);
 
+
+  const thumbs = slugs.filter(s => s !== slug).map((s: any) => {
+
+    const markdownWithMeta = fs.readFileSync(path.join('src', 'posts', 'projects', `${s}.mdx`))
+
+    const { data: thumbFrontMatter } = matter(markdownWithMeta);
+
+    return {slug: s, ...thumbFrontMatter}
+
+  }).filter((t: any) => t.coverIconUrl);
+
   return {
     props: {
+      thumbs,
       frontMatter,
       slug,
-      mdxSource,
       slugs,
-      slugIndex
+      slugIndex,
+      mdxSource,
     }
   }
 

@@ -8,7 +8,6 @@
   justify-content: center;
   flex-direction: column;
   transition: all 375ms ease;
-  display: none;
 }
 
 .fadeAway {

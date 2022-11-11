@@ -11,6 +11,7 @@ import styles from '../styles/Home.module.css';
 import { AppContext } from '../context';
 
 import Cover from '../components/cover';
+import FolioScroll from '../components/folio-scroll';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -57,7 +58,7 @@ const Home: NextPage = ({ projects } : any) => {
         <meta name="description" content="Feltlab" />
       </Head>
       <div className={`${styles.body} ${loading ? styles.bodyLoading : ''}`}>
-        <h1 className={`title ${styles.title}`}>Build something special</h1>
+        <h1 className={`title ${styles.title}`}><span>Build</span> <span>something</span> <span>special</span></h1>
         <ul className={styles.skills}>
           <li>Product strategy</li>
           <li>UI Design and prototyping</li>
@@ -71,6 +72,9 @@ const Home: NextPage = ({ projects } : any) => {
         <Carousel {...carouselProps}>
           {projectList}
         </Carousel>
+      </div>
+      <div className={styles.folio}>
+        <FolioScroll fadeAway={loading} projects={projects} />
       </div>
     </div>
   )

@@ -27,6 +27,9 @@
   top: 50%;
 }
 
-.logoDark {
-  transform: translateY(-50%);
+@media(max-width: 768px) {
+  .logoDark {
+    transform: translateY(-50%);
+  }
 }
+

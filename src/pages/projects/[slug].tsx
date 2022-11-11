@@ -1,9 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import Cover from '../../components/cover';
-import Thumb from '../../components/thumb';
 import { serialize } from 'next-mdx-remote/serialize';
 import {MDXRemote} from 'next-mdx-remote';
 
@@ -13,24 +11,23 @@ import Link from 'next/link'
 import styles from '../../styles/Slug.module.css'
 import { AppContext } from '../../context';
 
-const Project: NextPage = ({ thumbs, frontMatter, mdxSource, slugs, slugIndex }: any) => {
+import Cover from '../../components/cover';
+import Thumb from '../../components/thumb';
+import Image from '../../components/image';
+import BrowserCarousel from '../../components/browser-carousel';
+import ProjectHero from '../../components/project-hero';
 
-  const [nextLink, setNextLink] = useState('');
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
-  const {loading} = useContext(AppContext);
+const Project: NextPage = ({ thumbs, frontMatter, mdxSource }: any) => {
 
-  useEffect(() => {
-    if (slugIndex === slugs.length - 1) {
-      setNextLink(`/projects/${slugs[0]}`);
-    } else {
-      setNextLink(`/projects/${slugs[slugIndex + 1]}`);
-    }
-  }, [setNextLink])
+  const { loading, setHasDarkLogo } = useContext(AppContext);
 
   const thumbsList = thumbs.map((t: any) => {
     return (
       <Link href={`/projects/${t.slug}`} key={`thumb-${t.slug}}`}>
-        <div>
+        <div className={styles.thumb}>
           <Thumb
             name={t.title}
             bgColor={t.coverBackgroundColor}
@@ -39,7 +36,21 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource, slugs, slugIndex }:
         </div>
       </Link>
     )
-  })
+  });
+
+  const components = {
+    Image: Image,
+    Carousel: Carousel,
+    BrowserCarousel,
+  }
+
+  useEffect(() => {
+    if (frontMatter.hasLightHero) {
+      setHasDarkLogo(true);
+    } else {
+      setHasDarkLogo(false);
+    }
+  }, [setHasDarkLogo, frontMatter])
 
   return (
     <div className={styles.slug}>
@@ -50,6 +61,16 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource, slugs, slugIndex }:
       </Head>
 
       <div className={styles.grid}>
+        <div className={styles.hero}>
+          <ProjectHero
+            name={frontMatter.title}
+            bgColor={frontMatter.coverBackgroundColor}
+            logoWidth={frontMatter.coverLogoWidth}
+            logoHeight={frontMatter.coverLogoHeight}
+            screenImgUrl={frontMatter.coverScreenshotUrl}
+            logoImgUrl={frontMatter.coverLogoUrl}
+            />
+        </div>
         <div className={`${styles.cover} ${loading ? styles.coverLoading : ''}`}>
           <Cover
             covered={true}
@@ -60,30 +81,29 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource, slugs, slugIndex }:
             logoImgUrl={frontMatter.coverLogoUrl}
             bgColor={frontMatter.coverBackgroundColor}
           />
-          <div className={styles.thumbs}>
-            {thumbsList}
-          </div>
         </div>
         <div className={`${styles.body} ${loading ? styles.bodyLoading : ''}`}>
           <h1>{frontMatter.title}</h1>
-          <p className={styles.description}>{frontMatter.description}</p>
-          {frontMatter.previewLink && 
-            (
-              <p>
-                <a
-                  className={`btn btn--secondary ${styles.cta}`}
-                  href={frontMatter.previewLink}
-                  target="_blank"
-                  rel="noreferrer">
-                  Visit {frontMatter.title}
-                </a>
-              </p>
-            )
-          }
-
-          <MDXRemote {...mdxSource} />
-          <div className={styles.nav}>
-            <Link href={nextLink}><a className="btn btn--tertiary">Next project</a></Link>
+          <div className={styles.post}>
+            <p className={styles.description}>{frontMatter.description}</p>
+            {frontMatter.previewLink && 
+              (
+                <p>
+                  <a
+                    className={`btn btn--secondary ${styles.cta}`}
+                    href={frontMatter.previewLink}
+                    target="_blank"
+                    rel="noreferrer">
+                    Visit {frontMatter.title}
+                  </a>
+                </p>
+              )
+            }
+            <MDXRemote {...mdxSource} components={components}/>
+          </div>
+          <h4>Other projects</h4>
+          <div className={styles.thumbs}>
+            {thumbsList}
           </div>
         </div>
       </div>
@@ -116,7 +136,6 @@ export const getStaticProps = async ({ params: { slug } } : any) => {
   const files = fs.readdirSync(path.join('src', 'posts', 'projects'))
 
   const slugs = files.map(f => f.split('.')[0]);
-  const slugIndex = slugs.findIndex(s => s === slug);
 
   const markdownWithMeta = fs.readFileSync(path.join('src', 'posts', 'projects', `${slug}.mdx`))
 
@@ -139,8 +158,6 @@ export const getStaticProps = async ({ params: { slug } } : any) => {
       thumbs,
       frontMatter,
       slug,
-      slugs,
-      slugIndex,
       mdxSource,
     }
   }

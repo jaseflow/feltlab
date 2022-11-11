@@ -8,6 +8,8 @@ import { useRouter } from 'next/router';
 
 import { AppContext } from '../context';
 
+import Logo from '../components/logo';
+
 import styles from '../styles/App.module.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -16,6 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const [contacting, setContacting] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [hasDarkLogo, setHasDarkLogo] = useState(false);
 
   const contactingClass = contacting ? styles.contacting : '';
 
@@ -35,13 +38,13 @@ function MyApp({ Component, pageProps }: AppProps) {
   })
   
   return (
-    <AppContext.Provider value={{ loading, setLoading }}>
+    <AppContext.Provider value={{ loading, setLoading, hasDarkLogo, setHasDarkLogo }}>
       <div className={`${styles.wrapper} ${contactingClass}`}>
         <header className={styles.header}>
           <div className={styles.headerContainer}>
             <Link href="/">
-              <a className={styles.logo}>
-                <Image src="/feltlab.svg" alt="Feltlab" width={165} height={26} />
+              <a>
+                <Logo isDark={hasDarkLogo} />
               </a>
             </Link>
             <nav className={isHome ? styles.navWrapHome :styles.navWrap}>

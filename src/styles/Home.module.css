@@ -1,33 +1,27 @@
-.container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 100px);
-}
-
-.body {
-  padding-bottom: 420px;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  transition: all 375ms ease;
-}
-
-.bodyLoading {
-  opacity: 0;
-  transform: scale(0.9);
-}
-
 .contacting {
   position: relative;
 }
 
+.body {
+  padding: 50px 0 70px 0;
+}
+
+.container {
+  height: calc(100vh - 108px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .title {
   color: #fff;
-  text-align: center;
   margin-bottom: 0.5rem;
+  line-height: 1.05;
+}
+
+.carousel {
+  margin-left: -40px;
+  margin-right: -40px;
 }
 
 .avatar {
@@ -44,34 +38,81 @@
   gap: 1rem;
 }
 
-.folio {
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-
 .skills {
   display: flex;
-  align-items: center;
-  font-size: 125%;
-  opacity: 0.5;
-  margin-bottom: 2rem;
+  flex-direction: column;
+  opacity: 0.3;
+  margin: 1rem 0 2rem 0;
+  gap: 0.5rem;
   list-style: none;
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 15px;
 }
 
-.skills li {
-  display: flex;
-  align-items: center;
+@media(min-width: 768px) {
+
+  .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .bodyLoading {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  .body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: all 375ms ease;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .skills {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .skills li {
+    display: flex;
+    align-items: center;
+  }
+
+  .skills li:before {
+    margin: 0 1rem;
+    display: block;
+    content: '•';
+  }
+
+  .skills li:first-child:before {
+    display: none;
+  }
+
 }
 
-.skills li:before {
-  margin: 0 1rem;
-  display: block;
-  content: '•';
+@media(max-width: 767px) {
+
+  .cta {
+    width: 100%;
+  }
+
 }
 
-.skills li:first-child:before {
-  display: none;
+
+@media(min-width: 768px) {
+
+  .container {
+    height: 100vh;
+  }
+
 }
+

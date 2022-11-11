@@ -8,6 +8,7 @@
   justify-content: center;
   flex-direction: column;
   transition: all 375ms ease;
+  display: none;
 }
 
 .fadeAway {
@@ -47,4 +48,10 @@
 .folioLink {
   display: block;
   width: 300px;
+}
+
+@media(min-width: 768px) {
+  .folioItem {
+    opacity: 0.666;
+  }
 }

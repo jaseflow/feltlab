@@ -2,10 +2,12 @@
   height: 400px;
   background: #999;
   position: relative;
-  transition: transform 375ms ease;
-  transform: translateY(20px);
   border-radius: 30px 30px 0 0;
   box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.hasGutters {
+  margin: 0 15px;
 }
 
 .covered {
@@ -79,26 +81,6 @@
   }
 }
 
-.cover:hover {
-  transform: translateY(0);
-}
-
-.cover:hover .screen > span {
-  transform: translateY(-20px) scale(1.075);
-}
-
-.cover:hover .logo > span {
-  transform: translateY(-20px);
-}
-
-.covered:hover .screen > span {
-  transform: translateY(0) scale(1);
-}
-
-.covered:hover .logo > span {
-  transform: translateY(0);
-}
-
 .fixedHeight {
   animation: none;
   height: 500px;
@@ -113,4 +95,32 @@
 .fixedHeight .screen {
   animation: none;
   transform: translateY(0);
+}
+
+@media(min-width: 1024px) {
+
+  .cover {
+    transition: transform 375ms ease;
+    transform: translateY(20px);
+  }
+
+  .cover:hover {
+    transform: translateY(0);
+  }
+
+  .cover:hover .screen > span {
+    transform: translateY(-20px) scale(1.075);
+  }
+
+  .cover:hover .logo > span {
+    transform: translateY(-20px);
+  }
+
+  .covered:hover .screen > span {
+    transform: translateY(0) scale(1);
+  }
+
+  .covered:hover .logo > span {
+    transform: translateY(0);
+  }
 }

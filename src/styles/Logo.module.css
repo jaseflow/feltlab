@@ -1,0 +1,32 @@
+.logo {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  margin-left: 5px;
+  width: 125px;
+  height: 20px;
+  overflow: hidden;
+}
+
+.logoWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  transition: transform 200ms ease;
+  transform: translateY(0);
+}
+
+.logoVersion {
+  height: 20px;
+}
+
+.logoVersion:nth-child(2) {
+  position: absolute;
+  top: 50%;
+}
+
+.logoDark {
+  transform: translateY(-50%);
+}

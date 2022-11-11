@@ -1,10 +1,14 @@
-.slug {
-  padding: 194px 0;
-}
-
 .body {
   transition: all 375ms ease;
   color: #999;
+}
+
+.slug {
+  padding-bottom: 100px;
+}
+
+.hero {
+  margin: -108px -40px 40px -40px;
 }
 
 .bodyLoading {
@@ -13,17 +17,14 @@
 }
 
 .description {
-  font-size: 150%;
+  font-size: 125%;
   margin-bottom: 2rem;
 }
 
-.breadcrumb {
-  color: #fff;
-  opacity: 0.5;
-}
-
-.breadcrumb:hover {
-  opacity: 1;
+.post {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .thumbs {
@@ -56,7 +57,22 @@
   margin-top: 2rem;
 }
 
-@media(min-width: 1000px) {
+@media(max-width: 767px) {
+  .cover { display: none }
+}
+
+@media(min-width: 768px) {
+
+  .hero { display: none }
+
+  .thumbs {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  
+  .slug {
+    padding: 194px 0;
+  }
+
   .grid {
     display: grid;
     grid-template-columns: auto 1fr;

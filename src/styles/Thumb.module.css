@@ -7,7 +7,7 @@
   box-shadow: 0 10px 20px rgba(0,0,0,0.25);
   padding-bottom: 100%;
   cursor: pointer;
-  opacity: 0.25;
+  overflow: hidden;
 }
 
 .bg {
@@ -41,4 +41,11 @@
 
 .thumb:hover .logo > span {
   transform: translateY(-20px);
+}
+
+@media(min-width: 768px) {
+
+  .thumb {
+    opacity: 0.25;
+  }
 }

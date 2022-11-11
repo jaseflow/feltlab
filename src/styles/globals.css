@@ -8,7 +8,6 @@ html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-size: 110%;
   background-color: #00060E;
 }
 
@@ -89,6 +88,11 @@ label {
   border: 2px solid #fff;
 }
 
+.btn--neutral {
+  background: #111;
+  color: #fff;
+}
+
 .container {
   width: 100%;
   max-width: 1300px;
@@ -106,16 +110,34 @@ h1,
 h2,
 h3,
 h4 {
+  line-height: 1.2;
+  margin-bottom: 1rem;
   color: #fff;
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 2.25rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1rem;
 }
 
 .spacing,
 p {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+}
+
+p + h2 {
+  margin-top: 3rem;
 }
 
 .Gallery {
@@ -147,7 +169,6 @@ p {
 }
 
 .browser {
-  margin-bottom: 3rem;
   border-top: 2em solid #f2f2f2;
   box-shadow: 0 .1em 1em 0 rgba(0,0,0,.4);
   position: relative;
@@ -165,4 +186,14 @@ p {
   border-radius: 50%;
   background-color: #f44;
   box-shadow: 0 0 0 2px #f44,1.5em 0 0 2px #9b3,3em 0 0 2px #fb5;
+}
+
+@media(min-width: 768px) {
+  html {
+    font-size: 110%;
+  }
+}
+
+.browser .carousel {
+  padding-bottom: 44px;
 }

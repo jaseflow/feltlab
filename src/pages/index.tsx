@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -10,11 +10,45 @@ import styles from '../styles/Home.module.css';
 
 import { AppContext } from '../context';
 
-import FolioScroll from '../components/folio-scroll';
+import Cover from '../components/cover';
+
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 const Home: NextPage = ({ projects } : any) => {
 
-  const { loading, setLoading } = useContext(AppContext);
+  const { loading, setHasDarkLogo } = useContext(AppContext);
+  
+  const projectList = projects.map(({ frontMatter, slug } : any) => {
+    return (
+      <Link href={`/projects/${slug}`} key={`project-${slug}`}>
+        <div>
+          <Cover
+            hasGutters={true}
+            name={frontMatter.title}
+            logoWidth={frontMatter.coverLogoWidth}
+            logoHeight={frontMatter.coverLogoHeight}
+            screenImgUrl={frontMatter.coverScreenshotUrl}
+            logoImgUrl={frontMatter.coverLogoUrl}
+            bgColor={frontMatter.coverBackgroundColor}
+          />
+        </div>
+      </Link>
+    )
+  });
+
+  const carouselProps= {
+    showArrows: false,
+    showThumbs: false,
+    showIndicators: false,
+    showStatus: false,
+    emulateTouch: true,
+    centerMode: true,
+  }
+
+  useEffect(() => {
+    setHasDarkLogo(false);
+  }, [setHasDarkLogo])
 
   return (
     <div className={styles.container}>
@@ -23,17 +57,21 @@ const Home: NextPage = ({ projects } : any) => {
         <meta name="description" content="Feltlab" />
       </Head>
       <div className={`${styles.body} ${loading ? styles.bodyLoading : ''}`}>
-        <h1 className={`title ${styles.title}`}>Build something special.</h1>
+        <h1 className={`title ${styles.title}`}>Build something special</h1>
         <ul className={styles.skills}>
           <li>Product strategy</li>
           <li>UI Design and prototyping</li>
           <li>Web and mobile development</li>
         </ul>
         <nav className={styles.actions}>
-          <Link href="/contact"><a className="btn btn--large">Work with us</a></Link>
+          <Link href="/contact"><a className="btn btn--neutral btn--large">Work with us</a></Link>
         </nav>
       </div>
-      <FolioScroll fadeAway={loading} projects={projects} />
+      <div className={styles.carousel}>
+        <Carousel {...carouselProps}>
+          {projectList}
+        </Carousel>
+      </div>
     </div>
   )
 }

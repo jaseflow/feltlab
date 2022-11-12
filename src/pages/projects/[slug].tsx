@@ -52,6 +52,10 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource }: any) => {
     }
   }, [setHasDarkLogo, frontMatter])
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
   return (
     <div className={styles.slug}>
       <Head>

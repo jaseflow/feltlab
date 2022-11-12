@@ -83,7 +83,7 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource }: any) => {
           />
         </div>
         <div className={`${styles.body} ${loading ? styles.bodyLoading : ''}`}>
-          <h1>{frontMatter.title}</h1>
+          <h1 className={styles.title}>{frontMatter.title}</h1>
           <div className={styles.post}>
             <p className={styles.description}>{frontMatter.description}</p>
             {frontMatter.previewLink && 

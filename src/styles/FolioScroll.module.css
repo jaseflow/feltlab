@@ -1,8 +1,5 @@
 .folio {
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  overflow: auto;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -19,7 +16,7 @@
   white-space: nowrap;
   margin: 0 auto;
   overflow-x: auto;
-  padding-left: 1rem;
+  padding-left: 40px;
 }
 
 .folioItem {
@@ -50,6 +47,11 @@
 }
 
 @media(min-width: 768px) {
+
+  .folio {
+    overflow: hidden;
+  }
+
   .folioItem {
     opacity: 0.666;
   }

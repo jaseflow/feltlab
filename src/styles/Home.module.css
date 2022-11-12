@@ -2,10 +2,6 @@
   position: relative;
 }
 
-.body {
-  padding: 50px 0 70px 0;
-}
-
 .container {
   height: calc(100vh - 108px);
   display: flex;
@@ -53,8 +49,12 @@
   font-size: 15px;
 }
 
-.folio {
+.carousel {
   display: none;
+}
+
+.folio {
+  margin: 0 -40px;
 }
 
 @media(min-width: 768px) {
@@ -112,14 +112,14 @@
     width: 100%;
   }
 
+  .body {
+    padding: 50px 0;
+  }
+
 }
 
 
 @media(min-width: 768px) {
-
-  .body {
-    padding-bottom: 420px;
-  }
 
   .folio { display: block }
 

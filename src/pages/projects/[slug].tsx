@@ -8,6 +8,7 @@ import {MDXRemote} from 'next-mdx-remote';
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router';
 import styles from '../../styles/Slug.module.css'
 import { AppContext } from '../../context';
 
@@ -24,9 +25,16 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource }: any) => {
 
   const { loading, setHasDarkLogo } = useContext(AppContext);
 
+  const router = useRouter();
+
+  function handleThumbClick(e: any) {
+    e.preventDefault();
+    window.scrollTo(0,0);
+  };
+
   const thumbsList = thumbs.map((t: any) => {
     return (
-      <Link href={`/projects/${t.slug}`} key={`thumb-${t.slug}}`}>
+      <Link href={`/projects/${t.slug}`} key={`thumb-${t.slug}}`} onClick={handleThumbClick}>
         <div className={styles.thumb}>
           <Thumb
             name={t.title}
@@ -53,7 +61,6 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource }: any) => {
   }, [setHasDarkLogo, frontMatter])
 
   useEffect(() => {
-    window.scrollTo(0, 0);
   }, [])
 
   return (

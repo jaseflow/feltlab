@@ -79,6 +79,8 @@
 
 @media(min-width: 768px) {
 
+  .title { font-size: 4rem } 
+
   .hero { display: none }
 
   .thumbs {
@@ -96,7 +98,7 @@
   }
 
   .cover {
-    width: 400px;
+    width: 350px;
     transition: all 375ms ease;
     position: sticky;
     top: 150px;

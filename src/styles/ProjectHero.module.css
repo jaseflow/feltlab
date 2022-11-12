@@ -1,7 +1,5 @@
 .hero {
   height: 500px;
-  transform: translateY(-100%);
-  animation: showWrapper 375ms ease forwards;
 }
 .wrapper {
   height: 100%;

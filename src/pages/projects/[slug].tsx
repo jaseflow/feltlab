@@ -85,6 +85,7 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource }: any) => {
           <Cover
             covered={true}
             name={frontMatter.title}
+            fixedHeight={true}
             logoWidth={frontMatter.coverLogoWidth}
             logoHeight={frontMatter.coverLogoHeight}
             screenImgUrl={frontMatter.coverScreenshotUrl}
@@ -115,6 +116,9 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource }: any) => {
               )
             }
             <MDXRemote {...mdxSource} components={components}/>
+          </div>
+          <div className={`show-mobile ${styles.mobileCta}`}>
+            <button className="btn btn--block">Get in touch</button>
           </div>
           <h4>Other projects</h4>
           <div className={styles.thumbs}>

@@ -9,6 +9,15 @@
   justify-content: space-between;
 }
 
+.body {
+  transition: all 375ms ease;
+}
+
+.bodyLoading {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
 .title {
   color: #fff;
   margin-bottom: 0.5rem;
@@ -66,18 +75,12 @@
     min-height: 100vh;
   }
 
-  .bodyLoading {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-
   .body {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    transition: all 375ms ease;
   }
 
   .title {

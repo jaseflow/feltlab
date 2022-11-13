@@ -18,6 +18,7 @@
   display: inline-block;
   margin-right: 10px;
   width: 90%;
+  background: #222;
 }
 
 .item:last-child { margin-right: 40px }

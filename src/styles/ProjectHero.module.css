@@ -1,6 +1,12 @@
 .hero {
   height: 500px;
+  transition: transform 375ms ease;
 }
+
+.heroLoading {
+  transform: translateY(-100%);
+}
+
 .wrapper {
   height: 100%;
   position: relative;
@@ -21,6 +27,8 @@
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 20px;
+  opacity: 0;
+  animation: showFooter 375ms 1s ease forwards;
 }
 
 .screenshot {
@@ -30,15 +38,24 @@
   bottom: -20%;
   opacity: 0;
   transform: translateY(50%);
-  animation: showScreenshot 375ms 500ms ease forwards;
+  animation: showScreenshot 375ms 1s ease forwards;
 }
 
-@keyframes showWrapper {
+@keyframes showHero {
   from {
     transform: translateY(-100%);
   }
   to {
     transform: translateY(0);
+  }
+}
+
+@keyframes showFooter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 

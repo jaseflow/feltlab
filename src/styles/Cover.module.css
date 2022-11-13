@@ -85,6 +85,7 @@
   animation: none;
   height: 500px;
   transition: transform 375ms ease;
+  transform: translateY(0) !important;
 }
 
 .fixedHeight:hover {

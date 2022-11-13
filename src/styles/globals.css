@@ -169,6 +169,11 @@ p + h2 {
   html {
     font-size: 110%;
   }
+
+  .show-mobile {
+    display: none;
+  }
+
 }
 
 .browser .carousel {

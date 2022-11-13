@@ -8,7 +8,6 @@ import {MDXRemote} from 'next-mdx-remote';
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useRouter } from 'next/router';
 import styles from '../../styles/Slug.module.css'
 import { AppContext } from '../../context';
 
@@ -25,8 +24,6 @@ import { Carousel } from 'react-responsive-carousel';
 const Project: NextPage = ({ thumbs, frontMatter, mdxSource }: any) => {
 
   const { loading, setHasDarkLogo } = useContext(AppContext);
-
-  const router = useRouter();
 
   function handleThumbClick(e: any) {
     e.preventDefault();

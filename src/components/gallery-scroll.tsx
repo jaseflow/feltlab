@@ -9,9 +9,9 @@ const GalleryScroll = ({ children } : GalleryProps) => {
 
   console.log(children);
 
-  const items = children.map(({ props } : any) => {
+  const items = children.map(({ props } : any, i: number) => {
     return (
-      <div className={styles.item}>
+      <div className={styles.item} key={`image-${i}`}>
         <Image src={props.src} width={props.width} height={props.height} />
       </div>
     )

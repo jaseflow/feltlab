@@ -18,25 +18,28 @@ const Projects: NextPage = ({ posts } : any) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={styles.projects}>
-        {posts.map(({ frontMatter, slug } : any, index: number) => {
-          return (
-            <Link href={`/projects/${slug}`} key={index}>
-              <a draggable={false} className={styles.col}>
-                <Cover
-                  covered={true}
-                  fixedHeight={true}
-                  name={frontMatter.title}
-                  logoWidth={frontMatter.coverLogoWidth}
-                  logoHeight={frontMatter.coverLogoHeight}
-                  screenImgUrl={frontMatter.coverScreenshotUrl}
-                  logoImgUrl={frontMatter.coverLogoUrl}
-                  bgColor={frontMatter.coverBackgroundColor}
-                />
-              </a>
-            </Link>
-          )
-        })}
+      <div>
+        <h1 className="title">Work</h1>
+        <div className={styles.projects}>
+          {posts.map(({ frontMatter, slug } : any, index: number) => {
+            return (
+              <Link href={`/projects/${slug}`} key={index}>
+                <a draggable={false} className={styles.col}>
+                  <Cover
+                    covered={true}
+                    fixedHeight={true}
+                    name={frontMatter.title}
+                    logoWidth={frontMatter.coverLogoWidth}
+                    logoHeight={frontMatter.coverLogoHeight}
+                    screenImgUrl={frontMatter.coverScreenshotUrl}
+                    logoImgUrl={frontMatter.coverLogoUrl}
+                    bgColor={frontMatter.coverBackgroundColor}
+                  />
+                </a>
+              </Link>
+            )
+          })}
+        </div>
       </div>
 
     </div>

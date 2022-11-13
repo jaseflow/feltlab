@@ -2,13 +2,13 @@ import { useState, useEffect } from 'react';
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 
-import Image from 'next/image';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 
 import { AppContext } from '../context';
 
 import Logo from '../components/logo';
+import ContactForm from '../components/contact-form';
 
 import styles from '../styles/App.module.css'
 
@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   })
   
   return (
-    <AppContext.Provider value={{ loading, setLoading, hasDarkLogo, setHasDarkLogo }}>
+    <AppContext.Provider value={{ loading, setLoading, hasDarkLogo, setHasDarkLogo, contacting, setContacting }}>
       <div className={`${styles.wrapper} ${contactingClass}`}>
         <header className={styles.header}>
           <div className={styles.headerContainer}>
@@ -64,11 +64,9 @@ function MyApp({ Component, pageProps }: AppProps) {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact">
-                    <a className="btn">
-                      Get in touch
-                    </a>
-                  </Link>
+                  <button className="btn" onClick={() => setContacting(true)}>
+                    Get in touch
+                  </button>
                 </li>
               </ul>
             </nav>
@@ -76,10 +74,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         </header>
         <section className={styles.body}>
           <div className="container">
-            <Component {...pageProps} onContact={() => setContacting(true)} />
+            <Component {...pageProps} />
           </div>
         </section>
         <div className={styles.glow}></div>
+        <footer className={styles.footer}>
+          © 2022 Feltlab
+        </footer>
+        <ContactForm open={contacting} onClose={() => setContacting(false)} />
       </div>
     </AppContext.Provider>
   )

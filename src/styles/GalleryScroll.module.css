@@ -12,6 +12,7 @@
 .scroll {
   white-space: nowrap;
   width: 100%;
+  position: relative;
 }
 
 .item {
@@ -24,9 +25,10 @@
 .item:last-child { margin-right: 40px }
 
 @media(min-width: 768px) {
-
+  
   .gallery {
-    margin: 3rem 0;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .wrapper {
@@ -36,4 +38,7 @@
   .item {
     width: auto;
   }
+
+  .item:last-child { margin-right: 0 }
+
 }

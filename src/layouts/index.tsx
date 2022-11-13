@@ -28,7 +28,7 @@ export default function Layout({ children } : any) {
                 </Link>
               </li>
               <li>
-                <a href="#" className="btn">Get in touch</a>
+                <Link href="/?contacting=true" className="btn">Get in touch</Link>
               </li>
             </ul>
           </nav>

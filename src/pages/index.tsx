@@ -18,7 +18,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 const Home: NextPage = ({ projects } : any) => {
 
-  const { loading, setHasDarkLogo } = useContext(AppContext);
+  const { loading, setHasDarkLogo, setContacting } = useContext(AppContext);
   
   const projectList = projects.map(({ frontMatter, slug } : any) => {
     return (
@@ -65,7 +65,7 @@ const Home: NextPage = ({ projects } : any) => {
           <li>Web and mobile development</li>
         </ul>
         <nav className={styles.actions}>
-          <Link href="/contact"><a className="btn btn--large">Work with us</a></Link>
+          <button className="btn btn--large" onClick={() => setContacting(true)}>Get in touch</button>
         </nav>
       </div>
       <div className={styles.carousel}>

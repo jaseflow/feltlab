@@ -1,0 +1,72 @@
+.contact {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(100%);
+}
+
+.contactOpen {
+  transform: translateX(0);
+}
+
+.contactBg {
+  position: absolute;
+  background: rgba(0,0,0,0.9);
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  opacity: 0;
+  transition: transform 375ms ease;
+}
+
+.contactBgOpen {
+  opacity: 1;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 20;
+  color: #111;
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+  opacity: 0;
+  transform: translateY(200%);
+  transition: all 375ms ease;
+}
+
+.wrapperOpen {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.intro {
+  margin-bottom: 2rem;
+}
+
+.close {
+  cursor: pointer;
+  display: block;
+}
+
+@media(min-width: 768px) {
+  .wrapper {
+    height: auto;
+    width: 550px;
+  }
+}

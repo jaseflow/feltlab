@@ -27,16 +27,23 @@ label {
   height: 50px;
   border: 0;
   border-radius: 20px;
-  background: #262626;
-  color: #fff;
+  background: #ddd;
+  color: #222;
   padding: 0 1.5rem;
   font-size: 100%;
   margin-bottom: 1rem;
   outline: 0;
 }
 
+.input--textarea {
+  font-family: inherit;
+  height: 200px;
+  padding-top: 1rem;
+  font-size: 100%;
+}
+
 .inverse {
-  color: #222;
+  color: #00060E !important;
 }
 
 .btn {
@@ -56,6 +63,11 @@ label {
   border: 2px solid transparent;
   border-radius: 2rem;
   transition: all 375ms ease;
+}
+
+.btn[disabled] {
+  cursor: default;
+  opacity: 0.5;
 }
 
 .btn:hover {
@@ -108,6 +120,7 @@ label {
   font-family: 'Fredoka';
   font-weight: 600;
   color: #fff;
+  margin-left: -5px;
 }
 
 h1,
@@ -172,6 +185,14 @@ p + h2 {
 
   .show-mobile {
     display: none;
+  }
+
+  .title {
+    font-size: 4rem;
+  }
+
+  .title--tiny {
+    font-size: 2.25rem;
   }
 
 }

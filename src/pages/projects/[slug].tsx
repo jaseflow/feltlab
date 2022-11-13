@@ -92,6 +92,19 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource }: any) => {
             logoImgUrl={frontMatter.coverLogoUrl}
             bgColor={frontMatter.coverBackgroundColor}
           />
+          {frontMatter.previewLink && 
+            (
+              <div className={styles.cta}>
+                <a
+                  className={`btn btn--block btn--secondary`}
+                  href={frontMatter.previewLink}
+                  target="_blank"
+                  rel="noreferrer">
+                  Visit {frontMatter.title}
+                </a>
+              </div>
+            )
+          }
         </div>
         <div className={`${styles.body} ${loading ? styles.bodyLoading : ''}`}>
           <h1 className={styles.title}>{frontMatter.title}</h1>
@@ -104,15 +117,15 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource }: any) => {
             }
             {frontMatter.previewLink && 
               (
-                <p>
+                <div className={styles.cta}>
                   <a
-                    className={`btn btn--block btn--secondary ${styles.cta}`}
+                    className={`btn btn--block btn--secondary`}
                     href={frontMatter.previewLink}
                     target="_blank"
                     rel="noreferrer">
                     Visit {frontMatter.title}
                   </a>
-                </p>
+                </div>
               )
             }
             <MDXRemote {...mdxSource} components={components}/>

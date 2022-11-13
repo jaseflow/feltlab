@@ -18,36 +18,6 @@
   transition: all 375ms ease;
 }
 
-.contact {
-  position: fixed;
-  top: 100px;
-  left: 0;
-  width: 100%;
-  height: calc(100vh - 100px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  opacity: 0;
-  transition: all 375ms ease;
-}
-
-.contactForm {
-  padding: 4rem;
-  border-radius: 10px;
-  background: #fff;
-}
-
-.contacting .contact {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.contacting .body {
-  transform: translateY(calc(-100% - 100px));
-  opacity: 0;
-}
-
 .navWrap {
   transition: transform 375ms ease;
   transform: translateX(0);
@@ -98,10 +68,24 @@
   background: linear-gradient(rgba(0,0,0,0), #0b0b3c);
 }
 
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 75%;
+  color: #999;
+}
+
 @media(min-width: 768px) {
 
   .header {
     background: linear-gradient(#00060E, rgba(0,0,0,0));
+  }
+
+  .body {
+    padding-top: 194px;
   }
 
   .navWrap {

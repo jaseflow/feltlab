@@ -33,7 +33,7 @@
 }
 
 .description {
-  font-size: 125%;
+  font-size: 110%;
   margin-bottom: 2rem;
 }
 
@@ -51,10 +51,6 @@
   grid-row-gap: 30px;
   grid-template-columns: repeat(4, 1fr);
   animation: showThumbs 375ms 750ms forwards;
-}
-
-.cta {
-  max-width: 300px;
 }
 
 @keyframes showThumbs {

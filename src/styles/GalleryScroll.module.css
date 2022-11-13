@@ -1,0 +1,38 @@
+.gallery {
+  position: relative;
+  margin: 3rem -40px;
+}
+
+.wrapper {
+  position: relative;
+  overflow-x: scroll;
+  padding-left: 40px;
+}
+
+.scroll {
+  white-space: nowrap;
+  width: 100%;
+}
+
+.item {
+  display: inline-block;
+  margin-right: 10px;
+  width: 90%;
+}
+
+.item:last-child { margin-right: 40px }
+
+@media(min-width: 768px) {
+
+  .gallery {
+    margin: 3rem 0;
+  }
+
+  .wrapper {
+    padding: 0;
+  }
+
+  .item {
+    width: auto;
+  }
+}

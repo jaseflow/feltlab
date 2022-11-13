@@ -16,6 +16,7 @@ import Cover from '../../components/cover';
 import Thumb from '../../components/thumb';
 import Image from '../../components/image';
 import BrowserCarousel from '../../components/browser-carousel';
+import GalleryScroll from '../../components/gallery-scroll';
 import ProjectHero from '../../components/project-hero';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -50,6 +51,7 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource }: any) => {
     Image: Image,
     Carousel: Carousel,
     BrowserCarousel,
+    GalleryScroll,
   }
 
   useEffect(() => {
@@ -97,11 +99,16 @@ const Project: NextPage = ({ thumbs, frontMatter, mdxSource }: any) => {
           <h1 className={styles.title}>{frontMatter.title}</h1>
           <div className={styles.post}>
             <p className={styles.description}>{frontMatter.description}</p>
+            {frontMatter.heroImageUrl &&
+              <div className="browser">
+                <Image src={frontMatter.heroImageUrl} alt="Beachside Bargains" width="1440" height="900" />
+              </div>
+            }
             {frontMatter.previewLink && 
               (
                 <p>
                   <a
-                    className={`btn btn--secondary ${styles.cta}`}
+                    className={`btn btn--block btn--secondary ${styles.cta}`}
                     href={frontMatter.previewLink}
                     target="_blank"
                     rel="noreferrer">

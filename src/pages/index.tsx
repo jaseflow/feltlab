@@ -65,7 +65,7 @@ const Home: NextPage = ({ projects } : any) => {
           <li>Web and mobile development</li>
         </ul>
         <nav className={styles.actions}>
-          <Link href="/contact"><a className="btn btn--neutral btn--large">Work with us</a></Link>
+          <Link href="/contact"><a className="btn btn--large">Work with us</a></Link>
         </nav>
       </div>
       <div className={styles.carousel}>

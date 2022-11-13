@@ -27,8 +27,6 @@
   align-items: flex-end;
   justify-content: center;
   padding-bottom: 20px;
-  opacity: 0;
-  animation: showFooter 375ms 1s ease forwards;
 }
 
 .screenshot {
@@ -39,24 +37,6 @@
   opacity: 0;
   transform: translateY(50%);
   animation: showScreenshot 375ms 1s ease forwards;
-}
-
-@keyframes showHero {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes showFooter {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 @keyframes showScreenshot {

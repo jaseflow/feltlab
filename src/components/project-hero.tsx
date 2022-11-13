@@ -21,10 +21,10 @@ const ProjectHero = ({ name, bgColor, logoImgUrl, screenImgUrl, logoWidth, logoH
   return (
     <header className={`${styles.hero} ${loading ? styles.heroLoading : null}`} style={{ backgroundColor: bgColor}}>
       <div className={styles.wrapper}>
-        <div className={styles.screenshot}>
+        <div className={`${styles.screenshot} ${loading ? styles.screenshotLoading : null}`}>
           <Image src={screenImgUrl} width={200} height={411} alt={`Screenshot of ${name}`} />
         </div>
-        <div className={styles.footer} style={{ background: gradient}}>
+        <div className={`${styles.footer} ${loading ? styles.footerLoading : null}`} style={{ background: gradient}}>
           <Image src={logoImgUrl} width={logoWidth} height={logoHeight} alt={name} />
         </div>
       </div>
